@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androidui">
 
     <dist:module dist:instant="true" />
@@ -11,7 +12,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.KitkatActivity"></activity>
+        <activity android:name=".activity.TabbarActivity" />
+        <activity
+            android:name=".activity.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".activity.AnimationActivity" />
+        <activity android:name=".activity.FragmentActivity" />
+        <activity
+            android:name=".activity.DialogActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
+        <activity
+            android:name=".activity.InnerClassActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
+        <activity android:name=".activity.LifeCycleActivity" />
+        <activity android:name=".activity.ProgressBarActivity" />
+        <activity android:name=".activity.TextViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ViewPagerActivity" />
     </application>
 
 </manifest>
