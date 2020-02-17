@@ -2,6 +2,10 @@ package com.example.androidui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private List<ItemInfo> dataList = new LinkedList<>();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
         initUI();
         getData();
+
+//        Handler handler;
+//        Looper looper;
+//        MessageQueue messageQueue;
+//        Thread thread;
+//        ThreadLocal threadLocal;
+//        Message message;
 
         mAdapter.setDataList(dataList);
         mAdapter.notifyDataSetChanged();
@@ -56,7 +69,22 @@ public class MainActivity extends AppCompatActivity {
         // 4. 注入Adapter
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                return false;
+            }
 
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 //        // 5. 当itemView是固定高度时，可以设置这个属性，notifyItemxx刷新界面时，RecyclerView的onMeasure(),onLayout()就不会调用了，而是直接调用LayoutManager的onMeasure()，能提高一点性能
 //        mRecyclerView.setHasFixedSize(true);
 //        // 6.添加滚动监听

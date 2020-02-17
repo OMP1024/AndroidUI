@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androidui">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <dist:module dist:instant="true" />
 
     <application
@@ -14,7 +19,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.KitkatActivity"></activity>
+        <activity android:name=".activity.IncludeMergeViewStubActivity"></activity>
+        <activity android:name=".activity.HandlerActivity" />
+        <activity android:name=".activity.GlideActivity" />
+        <activity android:name=".activity.DrawLayoutActivity" />
+        <activity android:name=".activity.FileActivity" />
+
+        <receiver
+            android:name=".MyReceiver.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="my_broadcast" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".activity.BroadcastActivity" />
+        <activity android:name=".activity.IntentFilterActivity">
+            <intent-filter>
+                <action android:name="my_action" />
+
+                <category android:name="my_category" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.KitkatActivity" />
         <activity android:name=".activity.TabbarActivity" />
         <activity
             android:name=".activity.FullscreenActivity"

@@ -1,6 +1,7 @@
 package com.example.androidui.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -39,6 +41,27 @@ public class TestFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Log.i(TAG, "onAttach: ");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate: ");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Bundle bundle =  getArguments();
+        if (bundle != null){
+            Log.i(TAG, "onResume: " + bundle.getString(key_arg_extra));
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_test, container, false);
@@ -48,12 +71,6 @@ public class TestFragment extends Fragment {
             text.setText(bundle.getString(key_arg_extra));
         }
         return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate: ");
     }
 
     @Override
